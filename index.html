@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <title>Análise Fácil Data Pro</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Cores do PDF */
+        :root {
+            --azul-escuro: #262F3E;
+            --azul-titulo: #0C2B4E;
+            --verde-botao: #9EBF7D;
+            --verde-icone: #9DC284;
+            --cinza-fundo: #F8F8F8;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-[var(--azul-titulo)]">
+
+    <!-- ============================
+       HERO (IDÊNTICO AO PDF)
+=============================== -->
+    <section class="relative h-[680px] flex items-center"
+        style="background-image: radial-gradient(circle at 24.1% 68.8%, rgb(38 47 62 / 80%) 0%, rgb(27 34 45) 99.4%), url(./assets/hero.jpg); background-size: cover; background-position: center;">
+
+        <!-- Overlay azul escuro -->
+        <div class="absolute inset-0 bg-[var(--azul-escuro)]/80"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2">
+            <div>
+                <h1 class="text-white text-5xl font-bold leading-tight mb-6">
+                    Análise Fácil Data Pro:<br>
+                    Leitura rápida.<br>
+                    Filtros inteligentes.<br>
+                    Resultados Precisos.
+                </h1>
+
+                <p class="text-gray-200 text-xl mb-10">
+                    Analise, deduplique e exporte bases com milhões de linhas (até arquivos Parquet) com a
+                    simplicidade
+                    de
+                    um clique.
+                </p>
+            </div>
+
+            <div class="flex flex-col items-end justify-end">
+                <a href="#acao"
+                    class="bg-[var(--verde-botao)] px-8 py-3 text-[var(--azul-escuro)] text-lg font-semibold rounded shadow">
+                    quero ver a solução em ação!
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ============================
+  BLOCO: "A plataforma que faz..."
+================================ -->
+    <section class="bg-white py-24 px-6 max-w-6xl mx-auto">
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+            <!-- TÍTULO -->
+            <div class="border-r border-gray-300 flex flex-col justify-between">
+                <h2 class="text-4xl font-bold text-[var(--azul-titulo)] leading-tight">
+                    A Plataforma que faz o<br> que nenhuma<br> ferramenta barata faz
+                </h2>
+
+                <div class="text-lg text-[var(--azul-titulo)]">
+                    Análise Fácil Data Pro lê QUALQUER ARQUIVO (Parquet/CSV), independentemente da estrutura, e permite
+                    que qualquer colaborador, sem saber programar, realize análises de nível técnico!
+                </div>
+            </div>
+
+            <!-- TEXTO + QUADROS ESCUROS -->
+            <div>
+
+                <!-- QUADRO 1 -->
+                <div class="bg-[var(--azul-escuro)] text-white p-6 rounded shadow mb-8 w-3/4">
+                    Meu Excel TRAVA ao tentar abrir datasets!! O CSV é LENTO e pesado!!<br><br>
+                    Preciso de filtros complexos que só podem ser feitos por técnicos e perco Dados na conversão entre
+                    formatos!
+                </div>
+
+                <!-- QUADRO 2 -->
+                <div class="bg-[var(--azul-escuro)] text-white p-6 rounded shadow w-2/3 ml-auto">
+                    Sua equipe está perdendo tempo (e dinheiro) com esses problemas!<br><br>
+                    <span class="font-semibold">Equipe Data Pro</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- ============================
+   SESSÃO "Chega de bases..."
+================================ -->
+    <section class="relative h-[500px] flex items-center justify-center text-center"
+        style="background-image: radial-gradient(circle at 24.1% 68.8%, rgb(38 47 62 / 80%) 0%, rgb(27 34 45) 99.4%), url(./assets/section1.jpg); background-size: cover; background-position: center;">
+
+        <div class="absolute inset-0 bg-[var(--azul-escuro)]/75"></div>
+
+        <div class="relative z-10">
+            <h2 class="text-white text-5xl font-bold mb-8">
+                Chega de bases que travam e<br> filtros que exigem técnicos
+            </h2>
+
+            <a href="#form"
+                class="bg-[var(--verde-botao)] px-8 py-3 text-[var(--azul-escuro)] text-lg font-semibold rounded shadow">
+                quero parar de travar o excel
+            </a>
+        </div>
+    </section>
+
+
+
+    <!-- ============================
+  PODER ANALÍTICO
+================================ -->
+    <section class="py-24 px-6 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+        <h2 class="text-3xl font-bold mb-10 flex items-center">Poder analítico que elimina o retrabalho e ganha tempo:
+        </h2>
+
+        <div class="gap-10">
+
+            <!-- Ícones seguem o verde claro -->
+            <ul class="space-y-6 text-lg">
+                <li class="flex gap-3">
+                    <span class="text-[var(--verde-icone)]">✔</span>
+                    Carregamento Imediato: Carregue bases instantaneamente, mesmo com estruturas variáveis;
+                </li>
+
+                <li class="flex gap-3">
+                    <span class="text-[var(--verde-icone)]">✔</span>
+                    Compatibilidade Universal: Lê Parquet, CSV e outras bases gigantes sem travar;
+                </li>
+
+                <li class="flex gap-3">
+                    <span class="text-[var(--verde-icone)]">✔</span>
+                    Filtros e Buscas Intuitivas: Encontre a informação que você precisa com poucos cliques;
+                </li>
+
+                <li class="flex gap-3">
+                    <span class="text-[var(--verde-icone)]">✔</span>
+                    Deduplicação Simples: Limpe e harmonize seus registros de forma fácil e rápida;
+                </li>
+
+                <li class="flex gap-3">
+                    <span class="text-[var(--verde-icone)]">✔</span>
+                    Exportação Sem Limites: Exporte para Parquet, CSV ou Excel, mesmo acima de 1 milhão de linhas;
+                </li>
+            </ul>
+
+        </div>
+    </section>
+
+
+
+    <!-- ============================
+        BENEFÍCIOS
+================================ -->
+    <section class="bg-[var(--azul-escuro)] text-white py-16 px-6">
+
+        <div class="max-w-6xl mx-auto">
+
+            <h2 class="text-3xl font-bold mb-8">Benefícios</h2>
+
+            <div class="grid md:grid-cols-3 gap-10 text-lg">
+
+                <p>Processa parquet nativamente, sem engasgar com bases grandes, independente do banco e sem
+                    conhecimento técnico!</p>
+
+                <p>Não depende de esquema fixo e permite exportar de forma escalável (split Excel) com preview rápido!
+                </p>
+
+                <p>Agilidade e Autonomia: Coloque dados críticos em tempo real na mão de quem toma a decisão.</p>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- ============================
+   DESENVOLVIDO PARA LIDAR COM DADOS
+================================ -->
+    <section class="py-24 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
+
+        <img src="./assets/woman.jpg" class="rounded-xl shadow">
+
+        <div>
+            <h2 class="text-3xl font-bold mb-8">Desenvolvido para lidar com dados críticos:</h2>
+
+            <ul class="space-y-4 text-lg">
+                <li class="flex gap-3"><span class="text-[var(--verde-icone)]">✔</span> Logística</li>
+                <li class="flex gap-3"><span class="text-[var(--verde-icone)]">✔</span> Pedágio</li>
+                <li class="flex gap-3"><span class="text-[var(--verde-icone)]">✔</span> Auditoria</li>
+                <li class="flex gap-3"><span class="text-[var(--verde-icone)]">✔</span> Concessionárias</li>
+                <li class="flex gap-3"><span class="text-[var(--verde-icone)]">✔</span> Serviços</li>
+            </ul>
+        </div>
+
+    </section>
+
+
+
+    <!-- ============================
+        FALE CONOSCO + FORM
+================================ -->
+    <section class="bg-[var(--azul-escuro)] text-white py-20 px-6">
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+
+            <!-- CONTATO -->
+            <div>
+                <h2 class="text-4xl font-bold mb-6">Fale conosco</h2>
+
+                <p class="text-xl mb-6">
+                    Telefone<br>
+                    <span class="text-lg">(016) 98114-8582</span>
+                </p>
+
+                <p class="text-xl mb-6">
+                    Email<br>
+                    <span class="text-lg">abacatebonito@gmail.com</span>
+                </p>
+
+                <p class="text-xl">
+                    Endereço<br>
+                    <span class="text-lg leading-relaxed">
+                        Rua Abacate Bonito, 4566<br>
+                        Ribeirão Preto – São Paulo
+                    </span>
+                </p>
+            </div>
+
+
+            <!-- FORM -->
+            <form id="form" class="space-y-6">
+
+                <input type="text" placeholder="Nome"
+                    class="w-full bg-transparent border-b border-[var(--verde-botao)] py-2 placeholder-gray-300 focus:outline-none">
+
+                <input type="email" placeholder="E-mail"
+                    class="w-full bg-transparent border-b border-[var(--verde-botao)] py-2 placeholder-gray-300 focus:outline-none">
+
+                <input type="text" placeholder="Empresa"
+                    class="w-full bg-transparent border-b border-[var(--verde-botao)] py-2 placeholder-gray-300 focus:outline-none">
+
+                <input type="text" placeholder="Setor"
+                    class="w-full bg-transparent border-b border-[var(--verde-botao)] py-2 placeholder-gray-300 focus:outline-none">
+
+                <button
+                    class="bg-[var(--verde-botao)] text-[var(--azul-escuro)] px-6 py-3 rounded text-lg font-semibold w-full">
+                    solicitar demonstração
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ============================
+             RODAPÉ
+================================ -->
+    <footer class="bg-black text-center text-gray-300 py-4 text-sm">
+        © 2025 Data Pro – Todos os direitos reservados
+    </footer>
+
+</body>
+
+</html>
