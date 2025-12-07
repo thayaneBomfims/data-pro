@@ -11,6 +11,9 @@
 
     <title>Análise Fácil Data Pro</title>
 
+    <link rel="icon" href="./assets/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="./assets/icon.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -33,7 +36,161 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Estilos dos botões com hover e animação */
+        button[type="submit"],
+        a[href="#contato"] {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button[type="submit"]:hover,
+        a[href="#contato"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        button[type="submit"]:active,
+        a[href="#contato"]:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Animação de ripple ao clicar */
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .ripple-effect::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: ripple 0.6s ease-out;
+        }
+
+        /* Loading Spinner */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 3px solid rgba(38, 47, 62, 0.3);
+            border-top-color: var(--azul-escuro);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+
+        /* Notificação Toast */
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 16px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            animation: slideIn 0.4s ease-out;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .toast.success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .toast.error {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .toast.hide {
+            animation: slideOut 0.4s ease-out forwards;
+        }
+
+        .toast-icon {
+            font-size: 20px;
+        }
+
+        @media (max-width: 640px) {
+            .toast {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+            }
+        }
     </style>
+
+    <!-- ...existing code... -->
+
+    <script>
+        // Toggle menu mobile
+        document.getElementById("menuBtn").addEventListener("click", function () {
+            document.getElementById("mobileMenu").classList.toggle("hidden");
+        });
+
+        // Efeito ripple ao clicar nos botões
+        document.querySelectorAll('a[href="#contato"], button[type="submit"]').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                // Remove ripple anterior se existir
+                const existingRipple = this.querySelector('.ripple-effect');
+                if (existingRipple) existingRipple.remove();
+
+                // Cria novo elemento para o efeito ripple
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-effect');
+
+                const rect = this.getBoundingClientRect();
+                ripple.style.top = (e.clientY - rect.top) + 'px';
+                ripple.style.left = (e.clientX - rect.left) + 'px';
+
+                this.appendChild(ripple);
+            });
+        });
+    </script>
 
     <!-- EmailJS (para envio sem backend) -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -296,7 +453,7 @@
 
                 <p class="text-xl mb-6">
                     Email<br>
-                    <span class="text-lg">abacatebonito@gmail.com</span>
+                    <span class="text-lg">dere.desenvolvimento@gmail.com</span>
                 </p>
 
             </div>
@@ -345,13 +502,37 @@
         EMAILJS - ENVIO DO FORMULÁRIO
     ================================ -->
     <script>
-        // Inicialize EmailJS (troque pelo seu PUBLIC KEY)
-        // Vá em https://www.emailjs.com -> Sign up -> Add Email Service (Gmail) -> Create Template
-        // Depois pegue: SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY e cole abaixo.
-        emailjs.init("SEU_PUBLIC_KEY_AQUI");
+        // Inicialize EmailJS
+        emailjs.init("stwDVCTq62ZDOQqpY");
+
+        // Função para mostrar notificação toast
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+
+            const icon = type === 'success' ? '✓' : '✕';
+            toast.innerHTML = `
+                <span class="toast-icon">${icon}</span>
+                <span>${message}</span>
+            `;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('hide');
+                setTimeout(() => toast.remove(), 400);
+            }, 4000);
+        }
 
         document.getElementById("form").addEventListener("submit", function (e) {
             e.preventDefault();
+
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+
+            // Mostrar loading
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span>Enviando...';
 
             const templateParams = {
                 nome: this.nome.value,
@@ -360,14 +541,26 @@
                 setor: this.setor.value
             };
 
-            // Substitua pelos seus IDs
-            emailjs.send("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", templateParams)
+            // Enviar email
+            emailjs.send("data_pro_teste", "template_jqbqa8s", templateParams)
                 .then(function () {
-                    alert("Mensagem enviada com sucesso! Entraremos em contato por e-mail.");
+                    // Sucesso
+                    showToast("Mensagem enviada com sucesso! Entraremos em contato por e-mail.", "success");
                     document.getElementById("form").reset();
+
+                    // Restaurar botão após 2 segundos
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.innerHTML = originalText;
+                    }, 2000);
                 }, function (error) {
+                    // Erro
                     console.error("ERRO:", error);
-                    alert("Houve um erro ao enviar. Tente novamente.");
+                    showToast("Houve um erro ao enviar. Tente novamente.", "error");
+
+                    // Restaurar botão
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
                 });
         });
     </script>
